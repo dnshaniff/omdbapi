@@ -28,7 +28,7 @@
 
 <body class="bg-light">
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm sticky-top">
         <div class="container">
             <a class="navbar-brand fw-bold" href="{{ route('titles.index') }}">🎬 OMDb</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
