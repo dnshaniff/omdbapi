@@ -43,20 +43,28 @@
                             🌐 {{ strtoupper(app()->getLocale()) }}
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end">
-                            <li><a class="dropdown-item" href="{{ route('lang.switch', 'en') }}">English</a></li>
-                            <li><a class="dropdown-item" href="{{ route('lang.switch', 'id') }}">Bahasa Indonesia</a>
+                            <li><a class="dropdown-item"
+                                    href="{{ route('lang.switch', 'en') }}">{{ __('messages.nav.english') }}</a></li>
+                            <li><a class="dropdown-item"
+                                    href="{{ route('lang.switch', 'id') }}">{{ __('messages.nav.indonesian') }}</a>
                             </li>
                         </ul>
                     </li>
 
                     <li class="nav-item">
                         <a class="nav-link {{ request()->routeIs('titles.*') ? 'active' : '' }}"
-                            href="{{ route('titles.index') }}">Dashboard</a>
+                            href="{{ route('titles.index') }}">{{ __('messages.nav.dashboard') }}</a>
                     </li>
-                    {{-- <li class="nav-item">
+                    <li class="nav-item">
                         <a class="nav-link {{ request()->routeIs('favorites.*') ? 'active' : '' }}"
-                            href="{{ route('favorites.index') }}">Favorites</a>
-                    </li> --}}
+                            href="{{ route('favorites.index') }}">{{ __('messages.nav.favorites') }}</a>
+                    </li>
+                    <form method="POST" action="{{ route('logout') }}" class="d-inline">
+                        @csrf
+                        <button type="submit" class="btn btn-outline-light ms-3">
+                            {{ __('messages.nav.logout') }}
+                        </button>
+                    </form>
                 </ul>
             </div>
         </div>

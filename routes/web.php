@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FavoriteController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\TitleController;
@@ -24,6 +25,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/', [TitleController::class, 'index'])->name('titles.index');
     Route::get('/load-more', [TitleController::class, 'loadMore'])->name('titles.loadMore');
     Route::get('/titles/{imdbID}', [TitleController::class, 'show'])->name('titles.show');
+
+    Route::get('/favorites', [FavoriteController::class, 'index'])->name('favorites.index');
+    Route::post('/favorites', [FavoriteController::class, 'store'])->name('favorites.store');
+    Route::delete('/favorites/{imdbID}', [FavoriteController::class, 'destroy'])->name('favorites.destroy');
 
     Route::get('/lang/{locale}', function ($locale) {
         if (! in_array($locale, ['en', 'id'])) {

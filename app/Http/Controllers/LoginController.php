@@ -15,8 +15,8 @@ class LoginController extends Controller
     public function login(Request $request)
     {
         $credentials = $request->validate([
-            'username'    => ['required', 'username'],
-            'password' => ['required'],
+            'username'    => 'required|string',
+            'password' => 'required',
         ]);
 
         if (Auth::attempt($credentials, $request->filled('remember'))) {
@@ -26,7 +26,7 @@ class LoginController extends Controller
 
         return back()->withErrors([
             'username' => __('auth.failed'),
-        ])->onlyInput('email');
+        ])->onlyInput('username');
     }
 
     public function logout(Request $request)

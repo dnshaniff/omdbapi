@@ -49,13 +49,17 @@ class TitleController extends Controller
             $totalResults  = isset($data['totalResults']) ? (int) $data['totalResults'] : 0;
         }
 
+        $favoritedIds = auth()->user() ? auth()->user()->favorites()->pluck('imdb_id')->toArray() : [];
+
+
         return view('dashboard-index', compact(
             'titles',
             'error',
             'keyword',
             'page',
             'totalResults',
-            'year'
+            'year',
+            'favoritedIds'
         ));
     }
 
